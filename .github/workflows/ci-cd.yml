@@ -1,0 +1,32 @@
+name: Java CI/CD Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Build with Maven
+      run: mvn clean package
+
+    - name: Run tests
+      run: mvn test
+
+    - name: Simulated Deployment
+      run: |
+        echo "Deploying application..."
+        java -cp target/*.jar com.example.App
