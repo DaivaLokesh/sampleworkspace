@@ -8,6 +8,6 @@ public class Test1 {
 	App a=new App();
 	@Test
 	public void testing() {
-		assertEquals(5, a.add(2,8),"Error" );
+		assertEquals(5, a.add(2,3),"Error" );
 	}
 }
